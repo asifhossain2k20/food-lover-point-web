@@ -6,7 +6,7 @@ const FoodContainer = ({food,addedFoods}) => {
     const {strMeal,strMealThumb,strInstructions,idMeal}=food;
     return (
         <div className='col-md-4'>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' ,height:'28rem'}}>
                 <Card.Img variant="top" src={strMealThumb} />
                 <Card.Body>
                     <Card.Title>{strMeal}</Card.Title>

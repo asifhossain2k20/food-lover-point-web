@@ -1,9 +1,8 @@
 import React from 'react';
 
 const Cart = ({cart}) => {
-    console.log(cart);
     return (
-        <div>
+        <div className='p-4'>
             <h2>Selected Items</h2>
             <ul>
                 {

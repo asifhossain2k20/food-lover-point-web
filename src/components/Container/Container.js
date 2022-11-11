@@ -6,7 +6,6 @@ import FoodContainer from '../FoodContainer/FoodContainer';
 const Container = () => {
     const [foods,setFoods]=useState([]);
     const [cart,setCart]=useState([]);
-    
     useEffect(()=>{
         fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a')
         .then(res=>res.json())
@@ -19,8 +18,10 @@ const Container = () => {
     useEffect(()=>{
         const storedCart=getStoredCart();
         const savedCart=[]
-        for(const id in savedCart){
+        for(const id in storedCart){
+            console.log(id);
             const addedFood=foods.find(food=>food.idMeal===id);
+            
             if(addedFood){
                 const quantity=storedCart[id];
                 addedFood.quantity=quantity;
@@ -45,10 +46,10 @@ const Container = () => {
         addToDb(selectedFood.idMeal);
     }
     return (
-        <div>
-            <h1>All Food Menu</h1>
+        <div className='container'>
             <div className='row'>
                 <div className='col-md-8'>
+                <h2 className='text-center'>All Food Menu</h2>
                     <div className='row'>
                         {
                             foods.map(food=><FoodContainer addedFoods={addedFoods} key={food.idMeal} food={food}></FoodContainer>)
@@ -56,7 +57,6 @@ const Container = () => {
                     </div>
                 </div>
                 <div className='col-md-4'>
-                    <h2>Item Choose</h2>
                     <Cart cart={cart}></Cart>
                 </div>
             </div>
